@@ -51,8 +51,13 @@ export const AppwriteService = {
     return user;
   },
 
-  async getUser() {
+  async logout() {
+    await account.deleteSession('current');
+    },
+
+  async getCurrentUser() {
     const user = await account.get();
     return user;
   },
 };
+

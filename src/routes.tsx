@@ -1,3 +1,4 @@
+import React from 'react';
 import { createBrowserRouter, Route, createRoutesFromElements } from 'react-router-dom';
 import Root from './root';
 import Dashboard from './pages/Dashboard';
@@ -5,7 +6,6 @@ import AdminPanel from './pages/AdminPanel';
 import Login, { loginAction } from './components/Auth/Login';
 import Register, { registerAction } from './components/Auth/Register';
 import TaskDetails from './components/Tasks/TaskDetail';
-// ... other imports
 
 const router = createBrowserRouter(
   createRoutesFromElements(

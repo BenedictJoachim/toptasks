@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
-import router from "./routes";
-
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 
 const rootElement = document.getElementById("root");
 
@@ -10,7 +9,11 @@ if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </React.StrictMode>
   );
+} else {
+  console.error('Root element not found');
 }

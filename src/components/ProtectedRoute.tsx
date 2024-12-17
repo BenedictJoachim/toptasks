@@ -1,30 +1,23 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { AppwriteService } from "../services/AppwwriteServices";
+import { useAuth } from "../hooks/useAuth";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
   role?: string;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, role }) => {
-  const [user, setUser] = React.useState<any | null>(null);
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
+  const { user, isLoading } = useAuth();
 
-  React.useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const userData = await AppwriteService.getUser();
-        setUser(userData);
-      } catch {
-        setUser(null);
-      }
-    };
-    fetchUser();
-  }, []);
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
-  if (!user) return <Navigate to="/" replace />;
-  if (role && user.role !== role) return <p>Access Denied</p>;
-
+  if (!user) {
+    return <Navigate to={"/login"} />
+  }
+  
   return <>{children}</>;
 };
 
