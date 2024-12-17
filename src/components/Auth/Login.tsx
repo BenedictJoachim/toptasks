@@ -36,7 +36,7 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      <h1>Login or <Link to={"/Register"}>Signup</Link> if you do not have an account yet.</h1>
+      <h1>Login or <Link to={"/register"}>Signup</Link> if you do not have an account yet.</h1>
       <input
         type="email"
         placeholder="Email"
