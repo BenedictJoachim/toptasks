@@ -1,5 +1,6 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import Layout from "./components/Layout";
+import App from "./App";
 
 export default function Root() {
     return (
@@ -13,6 +14,7 @@ export default function Root() {
             </head>
             <body>
                 <Layout>
+                    <App />
                     <Outlet />
                 </Layout>
                 <ScrollRestoration />

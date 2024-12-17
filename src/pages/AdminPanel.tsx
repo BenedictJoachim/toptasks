@@ -21,11 +21,21 @@ const AdminPanel: React.FC = () => {
     setSelectedTaskId(id);
   };
 
+  const selectedTask = tasks.find((task) => task.id === selectedTaskId);
+
   return (
     <div>
       <h1>Admin Panel</h1>
       <TaskForm onSubmit={handleCreateTask} />
       <TaskList tasks={tasks} onSelectTask={handleSelectTask} />
+      {selectedTask && (
+        <div>
+          <h2>Selected Task</h2>
+          <p>Title: {selectedTask.title}</p>
+          <p>Description: {selectedTask.description}</p>
+          <p>Status: {selectedTask.status}</p>
+        </div>
+      )}
     </div>
   );
 };
