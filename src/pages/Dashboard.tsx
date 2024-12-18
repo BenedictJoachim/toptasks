@@ -1,9 +1,15 @@
 import React from "react";
 import TaskList from "../components/Tasks/TaskList";
 import { Task } from "../types";
+import { AppwriteService } from "../services/AppwwriteServices";
+import { useLoaderData } from "react-router-dom";
 
+export async function loader() {
+  const tasks = await AppwriteService.getTasks();
+  return tasks;
+}
 const Dashboard: React.FC = () => {
-  const tasks: Task[] = []; // Placeholder tasks array
+  const tasks = useLoaderData();
 
   const handleSelectTask = (id: string) => {
     console.log(`Task selected: ${id}`);
